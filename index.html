@@ -3,21 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator 🔢</title>
-    <script src="./arithmetic.js" defer></script>
-    <link href="./style.css" />
+    <title>Calculator</title>
+    <link href="./style.css" rel="stylesheet" />
+    <script defer src="./arithmetic.js"></script>
   </head>
-  <!-- 
- -->
   <body>
-    <div class="calculator">
-      <div class="screen"></div>
-      <div class="keypad">
-        <div class="arithmetic"></div>
-        <div class="numbers"></div>
+    <h1 class="cite">-- Calculator App</h1>
+    <div id="calculator">
+      <span id="screen">
+        <input
+          class="inputfield"
+          name="userInput"
+          type="number"
+          placeholder=" 0"
+        />
+      </span>
+      <div id="buttons">
+        <div class="numbers">
+          <button class="numBtn" id="num-0">0</button>
+          <button class="numBtn" id="num-1">1</button>
+          <button class="numBtn" id="num-2">2</button>
+          <button class="numBtn" id="num-3">3</button>
+          <button class="numBtn" id="num-4">4</button>
+          <button class="numBtn" id="num-5">5</button>
+          <button class="numBtn" id="num-6">6</button>
+          <button class="numBtn" id="num-7">7</button>
+          <button class="numBtn" id="num-8">8</button>
+          <button class="numBtn" id="num-9">9</button>
+        </div>
+        <div id="operators">
+          <button id="btn-add">+</button>
+          <button id="btn-subtract">-</button>
+          <button id="btn-division">/</button>
+          <button id="btn-multiplication">X</button>
+          <button id="btn-equotient">=</button>
+        </div>
+        <div id="controls">
+          <button id="btn-clear">CE</button>
+          <button id="btn-negPos">+/-</button>
+          <button id="btn-percentage">%</button>
+        </div>
       </div>
     </div>
   </body>
-  <!-- 
-   -->
 </html>
