@@ -6,41 +6,51 @@ body {
   box-sizing: border-box;
 }
 
-.cite {
+.application {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
   border: 2px blue solid;
 }
 
-#calculator {
-  border: 1px solid orange;
-  min-width: 400px;
-  width: 50%;
-  height: 400px;
+#calculator-container {
+  width: 250px;
+  height: 375px;
   background-color: rgba(0, 0, 0, 0.877);
   border-radius: 10px;
+  margin: 20% auto;
 }
 
-#screen {
+#screen-container {
   display: flex;
-  border: 2px pink solid;
-  overflow: hidden;
+  width: inherit;
 }
 
-.inputfield {
+.column {
+  margin-top: 12px;
+}
+
+.userInput {
+  display: block;
   flex: 1;
-  margin: 5px;
-  height: 40px;
-  width: inherit;
+  padding: 15px;
+  height: 45px;
+  width: 222px;
+  margin-left: 12px;
   background-color: rgb(137, 144, 144);
   color: greenyellow;
+  text-align: right;
+  font-size: 25px;
 }
 
 #buttons {
-  margin: 8px;
+  margin: 10px;
   display: flex;
   flex: 1, 2;
+}
+
+#column-btns {
+  display: block;
 }
 
 .numBtn {
@@ -54,10 +64,19 @@ body {
   font-weight: bold;
 }
 
-.opBtn,
-.conBtn {
+.opBtn {
   width: 40px;
-  height: 40px;
+  height: 38px;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  margin: 2px;
+}
+
+.conBtn {
+  width: 80px;
+  height: 38px;
   background-color: orange;
   color: white;
   font-weight: bold;
