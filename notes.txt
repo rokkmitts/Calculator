@@ -17,3 +17,17 @@ FOR FRONTEND ONLY PROJECTS where there are concerns about scripting attacks, a r
 ie; str.indexOf('+') !== -1 str.indexOf('#') !== -1 Etc.
 Front
 I had in mind something along the lines of: User input might get wrapped in a sort of wrapper that prevents code from using it in unsafe ways. That input might then need to be unwrapped in a particular way that makes it difficult for someone to UNKNOWINGLY do something unsafe with it. The code using it would need to ensure it was made safe for use in the context of that code before using it. Is there something like this that has been established? – 
+
+
+3).
+HOW TO ALIGN FORM ELEMENTS TO HAVE THE SAME WIDTH
+- Take into consideration the browser of choice by the users. all differ in how the compose the elements
+- To have form elements like input properly align with output elements like; select or output, the box-sizing attribute set to border-box.
+* for this project some adjustments were required with each elements margins and width
+
+4).
+The functionality of the calculator
+1st - The user presses their first number button(s)
+2nd - The user presser on operator button of choice. On the operator button press the operand1 variable is set to the number value and the operator variable is set to the function matching its value.
+3rd -  The inputfield is immediateely cleared from the inital value and begins to display the values the user presses
+4th - The user presses enter; the operand2 variable is set and the function call for the operation is initited.

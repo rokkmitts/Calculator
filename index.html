@@ -13,22 +13,26 @@
     <script defer src="./arithmetic.js"></script>
   </head>
   <body>
+    <h1>Calculator App Knockoff</h1>
+
     <div id="calculator-container">
       <div id="screen-container">
         <div class="column">
           <output
             name="typed"
-            style="color: greenyellow"
             class="userInput"
             type="text"
+            id="resultWindow"
           ></output>
-          <output
+
+          <input
+            id="inputValue"
             name="typed"
-            style="color: greenyellow"
             class="userInput"
-            type="text"
-            >0</output
-          >
+            type="number"
+            value=""
+            placeholder="0"
+          />
         </div>
       </div>
 
@@ -40,24 +44,50 @@
             <!-- <button class="conBtn" id="btn-percentage">%</button> -->
           </div>
           <div class="numbers">
-            <button class="numBtn" id="num-9">9</button>
-            <button class="numBtn" id="num-8">8</button>
-            <button class="numBtn" id="num-7">7</button>
-            <button class="numBtn" id="num-6">6</button>
-            <button class="numBtn" id="num-5">5</button>
-            <button class="numBtn" id="num-4">4</button>
-            <button class="numBtn" id="num-3">3</button>
-            <button class="numBtn" id="num-2">2</button>
-            <button class="numBtn" id="num-1">1</button>
-            <button class="numBtn" id="num-0">0</button>
+            <button accesskey="9" class="numBtn" id="num-9" value="9">9</button>
+            <button accesskey="8" class="numBtn" id="num-8" value="8">8</button>
+            <button accesskey="7" class="numBtn" id="num-7" value="7">7</button>
+            <button accesskey="6" class="numBtn" id="num-6" value="6">6</button>
+            <button accesskey="5" class="numBtn" id="num-5" value="5">5</button>
+            <button accesskey="4" class="numBtn" id="num-4" value="4">4</button>
+            <button accesskey="3" class="numBtn" id="num-3" value="3">3</button>
+            <button accesskey="2" class="numBtn" id="num-2" value="2">2</button>
+            <button accesskey="1" class="numBtn" id="num-1" value="1">1</button>
+            <button accesskey="0" class="numBtn" id="num-0" value="0">0</button>
           </div>
         </div>
         <div id="operators">
-          <button class="opBtn" id="btn-add">+</button>
-          <button class="opBtn" id="btn-subtract">-</button>
-          <button class="opBtn" id="btn-division">/</button>
-          <button class="opBtn" id="btn-multiplication">X</button>
-          <button class="opBtn" id="btn-negPos">+/-</button>
+          <button onclick="add()" name="addition" class="opBtn" id="btn-add">
+            +
+          </button>
+          <button
+            onclick="subtract()"
+            accesskey="-"
+            name="subtraction"
+            class="opBtn"
+            id="btn-subtract"
+          >
+            -
+          </button>
+          <button
+            onclick="divide()"
+            accesskey="/"
+            name="division"
+            class="opBtn"
+            id="btn-divide"
+          >
+            /
+          </button>
+          <button
+            onclick="multiply()"
+            accesskey="*"
+            name="multiplication"
+            class="opBtn"
+            id="btn-multiply"
+          >
+            X
+          </button>
+          <button name="" class="opBtn" id="Neg/Pos" onclick="">+/-</button>
         </div>
       </div>
     </div>
