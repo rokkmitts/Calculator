@@ -33,7 +33,7 @@ const divide = function (input) {
 //END OF ARITHMETIC FXS//END OF ARITHMETIC FXS//END OF ARITHMETIC FXS//
 //END OF ARITHMETIC FXS//END OF ARITHMETIC FXS//END OF ARITHMETIC FXS//
 /*
-be mindful that every algorithmic function MUST receive its data as an array.
+be mindful that every arithmetic function MUST receive its data as an array.
 */
 
 // Variables for each equation constructor //
@@ -49,9 +49,18 @@ const multiplyBTn = document.querySelector(".btn-multiply");
 const numberBtns = Array.from(document.querySelectorAll(".numBtn"));
 numberBtns.forEach((el) =>
   el.addEventListener("click", function () {
-    console.log(`${this.value} clicked`);
+    document.querySelector("#inputValue").value += `${this.value}`;
   })
 );
+
+//
+
+// Operate function
+/*
+must take in the operator, operand1 and operand2 variables.
+It must make a decision of which arithmic function to use based on the operator value.
+*/
+const operate = function () {};
 
 //
 //
