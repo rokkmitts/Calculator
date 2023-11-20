@@ -1,5 +1,15 @@
-//ARITHMETIC FUNCTIONS BELOW //ARITHMETIC FUNCTIONS BELOW //ARITHMETIC FUNCTIONS BELOW //
-//ARITHMETIC FUNCTIONS BELOW //ARITHMETIC FUNCTIONS BELOW //ARITHMETIC FUNCTIONS BELOW //
+// Variables for operator buttons //
+const addBTn = document.querySelector(".btn-add");
+const subtractBTn = document.querySelector(".btn-subtract");
+const divideBTn = document.querySelector(".btn-divide");
+const multiplyBTn = document.querySelector(".btn-multiply");
+
+const inputField = document.querySelector("#inputValue");
+
+// Variables for each equation constructor //
+let operand1, operator, operand2;
+//
+//
 // Addition function to return the sum of inputs regardless of their length
 const add = function (input) {
   const sum = input.reduce(function (total, num) {
@@ -32,28 +42,47 @@ const divide = function (input) {
 
 //END OF ARITHMETIC FXS//END OF ARITHMETIC FXS//END OF ARITHMETIC FXS//
 //END OF ARITHMETIC FXS//END OF ARITHMETIC FXS//END OF ARITHMETIC FXS//
-/*
-be mindful that every arithmetic function MUST receive its data as an array.
-*/
 
-// Variables for each equation constructor //
-let operand1, operator, operand2;
-
-// Variables for operator buttons //
-const addBTn = document.querySelector(".btn-add");
-const subtractBTn = document.querySelector(".btn-subtract");
-const divideBTn = document.querySelector(".btn-divide");
-const multiplyBTn = document.querySelector(".btn-multiply");
+/*BELOW IS THE DEEP FUNCTIONALITY OF THE PROGRAM*/
 
 // Variable(s) for number buttons //
 const numberBtns = Array.from(document.querySelectorAll(".numBtn"));
+// click event for number buttons
 numberBtns.forEach((el) =>
   el.addEventListener("click", function () {
     document.querySelector("#inputValue").value += `${this.value}`;
   })
 );
 
-//
+// variable(s) for operator buttons
+const operatorBtns = Array.from(document.querySelectorAll(".opBtn"));
+//click event for operator buttons
+operatorBtns.forEach((el) =>
+  el.addEventListener("click", function () {
+    console.log(`inital: ${operand1}`);
+    operand1 = inputField.value;
+    console.log(`set: ${operand1}`);
+    inputField.value = "";
+
+    operator = `${el.name} operator`;
+
+    // switch (operator) {
+    //   case (this.el = addBTn):
+    //     operator = add();
+    //     break;
+    //   case subtractBTn:
+    //     operator = subtract();
+    //     break;
+    //   case divideBTn:
+    //     operator = divide();
+    //     break;
+    //   case multiplyBTn:
+    //     operator = multiply();
+    //     break;
+    // }
+    console.log(operator);
+  })
+);
 
 // Operate function
 /*

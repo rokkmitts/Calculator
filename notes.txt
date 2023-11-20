@@ -31,3 +31,18 @@ The functionality of the calculator
 2nd - The user presser on operator button of choice. On the operator button press the operand1 variable is set to the number value and the operator variable is set to the function matching its value.
 3rd -  The inputfield is immediateely cleared from the inital value and begins to display the values the user presses
 4th - The user presses enter; the operand2 variable is set and the function call for the operation is initited.
+
+
+PSUEDO CODE:
+- after the first sequence of numbers are pressed
+  and ANY operator button is clicked;
+1) * operand1 is set to input.value
+2) * input.value is reset to undefined; clearing the input window
+3) * operator is systematically set to the operator button pressed
+4) * the seceond sequence of numbers entered are set to operand2
+(tricky parts ahead)
+
+4.0). (pushing Equals)- IF the equals symbol is pressed to follow then operand3 is set to the result from the function and it is displayed in the output window. operand1 and operand2 reset to undefined.
+   
+4.1). (NOT Pushing Equals)- IF another operator is pressed; operand1 and operand2 values are passed to the operator selected. The function simutaneosuly runs, setting operand3 as the result of the function and sets output.value to operand3.
+    - Operand1 then become the value of operand3. Operand3 and operand2 are reset to undefined. The next value entered is set to operand2.
