@@ -32,7 +32,7 @@ The functionality of the calculator
 3rd -  The inputfield is immediateely cleared from the inital value and begins to display the values the user presses
 4th - The user presses enter; the operand2 variable is set and the function call for the operation is initited.
 
-
+/*
 PSUEDO CODE:
 - after the first sequence of numbers are pressed
   and ANY operator button is clicked;
@@ -46,3 +46,37 @@ PSUEDO CODE:
    
 4.1). (NOT Pushing Equals)- IF another operator is pressed; operand1 and operand2 values are passed to the operator selected. The function simutaneosuly runs, setting operand3 as the result of the function and sets output.value to operand3.
     - Operand1 then become the value of operand3. Operand3 and operand2 are reset to undefined. The next value entered is set to operand2.
+*/
+
+5). [*IDEA* use object oriented programming to house the operator functions]
+Try placing every prototype operator function in the same object.
+
+Use that object as a direct reference. Referencing each function dynamically by its key against the buttons name.
+In the cse of a match, set operator variable = to that objects value pair.
+
+
+11/18/23 (0419 Hours):
+I spent time rearranging the js file with the intent to clean up its readabilty and appearence
+I discovered a bug i created in the process involving global vs local EC with functions and function calls
+Code higher up in the execution context and out of the scope of the method/function call could not access the this.el or el.name syntaical structure that was initally used.
+An easy correction involed passing in an arg to the function and **line 75-76
+/* switch case example
+
+*/
+
+11/19/23(2315 Hours):
+/* (+/-) BUTTON */
+create a variable for the DOM element
+on that eleemnt attach a eventlistener that contains a function to house a ternary op
+use a ternary operator for the +/- feature;
+when clicked, toggle the inputField.value to + or - regardless if its holding typed in numbers
+
+/* (CE) BUTTON */
+create a variable for the DOM element
+on the element call a click listener with embedded function to clear global variables
+on button click;
+clear the operand1, operand2, operator and inputField.value
+
+/* = */
+If operand1, operand2 and operator have values;
+run the operate function - pass inputField.value the return value to display
