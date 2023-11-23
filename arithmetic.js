@@ -1,10 +1,15 @@
 // Variables for each equation constructor //
-let operand1, operand2, operator;
+let operand1, operand2, operator, btnName;
 //
 //
-//Variable for inputField
+//Variable for calculator windows
 const inputField = document.querySelector("#inputValue");
+const outPutField = document.querySelector("#resultValue");
 //
+// variable for clear button
+const clearAllBtn = document.querySelector("#btn-clear");
+//  variable for equal button
+const equalsBtn = document.querySelector("#btn-equotient");
 // array collecting number buttons //
 const numberBtns = Array.from(document.querySelectorAll(".numBtn"));
 // array collecting operator buttons //
@@ -16,49 +21,82 @@ numberBtns.forEach((el) =>
     document.querySelector("#inputValue").value += `${this.value}`;
   })
 );
-//
+//BUG
 //  click eventlisteners on every operator button //
-operatorBtns.forEach((el) =>
-  el.addEventListener("click", function () {
-    let opName = `${el.name}`;
-    starter(opName);
+operatorBtns.forEach((elBtn) =>
+  elBtn.addEventListener("click", function () {
+    btnName = elBtn.name;
+    if (!operator) {
+      operator = btnName;
+    }
+    operationSetter(btnName);
   })
 );
+//BUG
+// Function for inital operator analysis
+const operationSetter = function (btnName) {
+  if (inputField.value && !operand1) {
+    operand1 = Number(inputField.value);
+    inputField.value = "";
+  } else if (inputField.value && !operand2) {
+    operand2 = Number(inputField.value);
+    inputField.value = "";
+    outPutField.value = operatorSorter(operator);
+    operator = "";
+    console.log(operator, btnName);
+    operand1 = Number(outPutField.value);
+
+    console.log(operand1, operand2);
+  }
+};
 //
 // Function for operation construction
-function operateSwitch(opName) {
-  switch (opName) {
+function operatorSorter(operator) {
+  switch (operator) {
     case "add":
-      return add([operand1, operand2]); /* sum */
+      return add([operand1, operand2]);
       break;
     case "subtract":
-      return subtract([operand1, operand2]); /* difference */
+      return subtract([operand1, operand2]);
       break;
     case "divide":
-      return divide([operand1, operand2]); /* quotient */
+      return divide([operand1, operand2]);
       break;
     case "multiply":
-      return multiply([operand1, operand2]); /* product */
+      return multiply([operand1, operand2]);
       break;
+    default:
+      console.log(`error: (+/- button)`);
   }
 }
 //
-// Function for inital operator analysis
-const starter = function (opName) {
-  if (!operand1 && inputField.value) {
-    operator = opName;
-    operand1 = Number(inputField.value);
+// event listener to clear all values constructed
+clearAllBtn.addEventListener("click", function () {
+  inputField.value = "";
+  outPutField.value = "";
+  operand1 = "";
+  operand2 = "";
+  operator = "";
+  btnName = "";
+
+  console.log(
+    inputField.value,
+    outPutField.value,
+    operand1,
+    operand2,
+    btnName,
+    operator
+  );
+});
+//
+// eventlistener to equate the values that have been are held in operand1 and operand2
+equalsBtn.addEventListener("click", function () {
+  if (inputField.value && operand1) {
+    operand2 = Number(inputField.value);
+    outPutField.value = operatorSorter(operator);
     inputField.value = "";
   }
-
-  if (operand1 && inputField.value) {
-    operand2 = Number(inputField.value);
-    const ans = operateSwitch(opName);
-
-    operand1 = ans;
-    inputField.value = ans;
-  }
-};
+});
 //
 //
 //

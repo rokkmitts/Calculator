@@ -1,6 +1,6 @@
 const arithmetic = require("./arithmetic");
 
-describe("add", () => {
+describe("works with all basic algorithmic operations", () => {
   //
   //
   test("Adds a negative and positive integer", () => {
