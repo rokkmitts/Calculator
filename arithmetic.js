@@ -10,6 +10,8 @@ const outPutField = document.querySelector("#resultValue");
 const clearAllBtn = document.querySelector("#btn-clear");
 //  variable for equal button
 const equalsBtn = document.querySelector("#btn-equotient");
+// variable targeting change on inputField.value
+const pos_neg = document.querySelector("#signBtn");
 // array collecting number buttons //
 const numberBtns = Array.from(document.querySelectorAll(".numBtn"));
 // array collecting operator buttons //
@@ -21,7 +23,7 @@ numberBtns.forEach((el) =>
     document.querySelector("#inputValue").value += `${this.value}`;
   })
 );
-//BUG
+//
 //  click eventlisteners on every operator button //
 operatorBtns.forEach((elBtn) =>
   elBtn.addEventListener("click", function () {
@@ -35,6 +37,10 @@ operatorBtns.forEach((elBtn) =>
 //BUG
 // Function for inital operator analysis
 const operationSetter = function (btnName) {
+  if (outPutField.value) {
+    operand1 = Number(outPutField.value);
+  }
+
   if (inputField.value && !operand1) {
     operand1 = Number(inputField.value);
     inputField.value = "";
@@ -43,10 +49,7 @@ const operationSetter = function (btnName) {
     inputField.value = "";
     outPutField.value = operatorSorter(operator);
     operator = "";
-    console.log(operator, btnName);
     operand1 = Number(outPutField.value);
-
-    console.log(operand1, operand2);
   }
 };
 //
@@ -65,8 +68,6 @@ function operatorSorter(operator) {
     case "multiply":
       return multiply([operand1, operand2]);
       break;
-    default:
-      console.log(`error: (+/- button)`);
   }
 }
 //
@@ -75,27 +76,26 @@ clearAllBtn.addEventListener("click", function () {
   inputField.value = "";
   outPutField.value = "";
   operand1 = "";
-  operand2 = "";
   operator = "";
+  operand2 = "";
   btnName = "";
-
-  console.log(
-    inputField.value,
-    outPutField.value,
-    operand1,
-    operand2,
-    btnName,
-    operator
-  );
 });
 //
 // eventlistener to equate the values that have been are held in operand1 and operand2
 equalsBtn.addEventListener("click", function () {
   if (inputField.value && operand1) {
     operand2 = Number(inputField.value);
-    outPutField.value = operatorSorter(operator);
     inputField.value = "";
+    outPutField.value = Number(operatorSorter(operator));
+    operand2 = "";
+    operator = "";
+    console.log(`equation: op1:${operand1}, oper:${operator}, op2:${operand2}`);
   }
+});
+//
+// eventlistener for pos_neg button changes value of input
+pos_neg.addEventListener("click", function () {
+  console.log("+/- click");
 });
 //
 //
@@ -154,6 +154,9 @@ const divide = function (input) {
   console.log(`quotient: ${quotient}`);
   return quotient;
 };
+//
+// input value changer
+
 //
 //
 //
