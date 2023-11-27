@@ -30,15 +30,20 @@ operatorBtns.forEach((elBtn) =>
     btnName = elBtn.name;
     if (!operator) {
       operator = btnName;
+      btnName = "";
     }
-    operationSetter(btnName);
+    operationSetter(operator);
+    console.log(
+      `operand1: ${operand1}, operand2: ${operand2}, operator: ${operator}, btnName: ${btnName}`
+    );
   })
 );
 //BUG
 // Function for inital operator analysis
-const operationSetter = function (btnName) {
+const operationSetter = function (operator) {
   if (outPutField.value) {
     operand1 = Number(outPutField.value);
+    // operand2 = Number(inputField.value);
   }
 
   if (inputField.value && !operand1) {
@@ -80,14 +85,14 @@ clearAllBtn.addEventListener("click", function () {
   operand2 = "";
   btnName = "";
 });
-//
+//BUG
 // eventlistener to equate the values that have been are held in operand1 and operand2
 equalsBtn.addEventListener("click", function () {
-  if (inputField.value && operand1) {
+  if (inputField.value || (inputField.value === 0 && operand1)) {
     operand2 = Number(inputField.value);
     inputField.value = "";
     outPutField.value = Number(operatorSorter(operator));
-    operand2 = "";
+    // operand2 = "";
     operator = "";
     console.log(`equation: op1:${operand1}, oper:${operator}, op2:${operand2}`);
   }
