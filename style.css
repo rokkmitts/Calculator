@@ -43,6 +43,7 @@ output {
   text-align: right;
   font-size: 25px;
 }
+
 input {
   margin-left: 12px;
   display: block;
@@ -53,6 +54,7 @@ input {
   background-color: rgb(137, 144, 144);
   color: greenyellow;
   text-align: right;
+  /* padding-top: 50px; */
   font-size: 25px;
 }
 

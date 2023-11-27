@@ -1,5 +1,5 @@
 // Variables for each equation constructor //
-let operand1, operand2, operator, btnName;
+let operand1, operand2, operator, secondOperator;
 //
 //
 //Variable for calculator windows
@@ -10,53 +10,12 @@ const outPutField = document.querySelector("#resultValue");
 const clearAllBtn = document.querySelector("#btn-clear");
 //  variable for equal button
 const equalsBtn = document.querySelector("#btn-equotient");
-// variable targeting change on inputField.value
-const pos_neg = document.querySelector("#signBtn");
-// array collecting number buttons //
-const numberBtns = Array.from(document.querySelectorAll(".numBtn"));
 // array collecting operator buttons //
 const operatorBtns = Array.from(document.querySelectorAll(".opBtn"));
-//
-// click eventlisteners on every number buttons //
-numberBtns.forEach((el) =>
-  el.addEventListener("click", function () {
-    document.querySelector("#inputValue").value += `${this.value}`;
-  })
-);
-//
-//  click eventlisteners on every operator button //
-operatorBtns.forEach((elBtn) =>
-  elBtn.addEventListener("click", function () {
-    btnName = elBtn.name;
-    if (!operator) {
-      operator = btnName;
-      btnName = "";
-    }
-    operationSetter(operator);
-    console.log(
-      `operand1: ${operand1}, operand2: ${operand2}, operator: ${operator}, btnName: ${btnName}`
-    );
-  })
-);
-//BUG
-// Function for inital operator analysis
-const operationSetter = function (operator) {
-  if (outPutField.value) {
-    operand1 = Number(outPutField.value);
-    // operand2 = Number(inputField.value);
-  }
-
-  if (inputField.value && !operand1) {
-    operand1 = Number(inputField.value);
-    inputField.value = "";
-  } else if (inputField.value && !operand2) {
-    operand2 = Number(inputField.value);
-    inputField.value = "";
-    outPutField.value = operatorSorter(operator);
-    operator = "";
-    operand1 = Number(outPutField.value);
-  }
-};
+// variable targeting change on inputField.value
+const sign = document.querySelector("#signBtn");
+// array collecting number buttons //
+const numberBtns = Array.from(document.querySelectorAll(".numBtn"));
 //
 // Function for operation construction
 function operatorSorter(operator) {
@@ -76,51 +35,64 @@ function operatorSorter(operator) {
   }
 }
 //
+// click eventlisteners on every number buttons //
+numberBtns.forEach((el) =>
+  el.addEventListener("click", function () {
+    inputField.value += `${this.value}`;
+  })
+);
+//
+//  click eventlisteners on every operator button //
+operatorBtns.forEach((btn) =>
+  btn.addEventListener("click", function () {
+    if (inputField.value && !operand1 && !operand2) {
+      operand1 = Number(inputField.value);
+      inputField.value = "";
+      operator = btn.name; // +
+    } else if (inputField.value && operand1 && !operand2) {
+      operand2 = Number(inputField.value);
+      outPutField.value = operatorSorter(operator);
+      operand1 = Number(outPutField.value);
+      operator = btn.name; // -
+      inputField.value = "";
+      operand2 = "";
+      console.log(`operator: ${operator}, op1: ${operand1}`);
+    }
+
+    if (outPutField.value) {
+      operand1 = Number(outPutField.value);
+      operator = btn.name;
+    }
+    console.log(operand1, operator);
+  })
+);
+//
 // event listener to clear all values constructed
 clearAllBtn.addEventListener("click", function () {
   inputField.value = "";
   outPutField.value = "";
-  operand1 = "";
-  operator = "";
-  operand2 = "";
   btnName = "";
+  operator = "";
+  operand1 = "";
+  operand2 = "";
 });
-//BUG
+//
 // eventlistener to equate the values that have been are held in operand1 and operand2
 equalsBtn.addEventListener("click", function () {
-  if (inputField.value || (inputField.value === 0 && operand1)) {
+  if (inputField.value && operand1 && !operand2) {
     operand2 = Number(inputField.value);
+    outPutField.value = operatorSorter(operator);
+
     inputField.value = "";
-    outPutField.value = Number(operatorSorter(operator));
-    // operand2 = "";
-    operator = "";
-    console.log(`equation: op1:${operand1}, oper:${operator}, op2:${operand2}`);
+    operand2 = "";
   }
+  console.log(operand1);
 });
 //
 // eventlistener for pos_neg button changes value of input
-pos_neg.addEventListener("click", function () {
-  console.log("+/- click");
+sign.addEventListener("click", function () {
+  // on click switch inut.value from positive to negative and back etc.
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 // ARITHMETIC FUNCTIONS
 //add function
@@ -160,8 +132,6 @@ const divide = function (input) {
   return quotient;
 };
 //
-// input value changer
-
 //
 //
 //

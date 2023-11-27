@@ -80,3 +80,8 @@ clear the operand1, operand2, operator and inputField.value
 /* = */
 If operand1, operand2 and operator have values;
 run the operate function - pass inputField.value the return value to display
+
+11/24/23(0517Hours):
+BUG arithmic chaining is not working when operators are switched.
+algorithms will have to be restructured in how they handle outcomes and assign based off;
+and operator btn press and the equals btn press
