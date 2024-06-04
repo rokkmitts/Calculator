@@ -1,2 +1,2 @@
 # calculator
-A functional arithmetic calculator with a similar UI of Apple Calculator
+A functional calculator with a similar UI of Apple Calculator
